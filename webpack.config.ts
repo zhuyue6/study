@@ -64,9 +64,9 @@ let config:webpack.Configuration = {
           },
           publicPath: (url) => {
             if (/\.(woff|ttf)$/.test(url)) {
-              return path.resolve(__dirname, `dist/assets/fonts/${url}`)
+              return `../fonts/${url}`
             }
-            return path.resolve(__dirname, `dist/assets/images/${url}`)
+            return `../images/${url}`
           }
         }
       },
