@@ -6,4 +6,5 @@ const app = express()
 const port = 3000
 
 app.use('/', express.static(path.join(__dirname, '../dist')))
+app.use('/depend', express.static(path.join(__dirname, '../depend')))
 app.listen(port, () => console.log(`app start on port ${port}!`))

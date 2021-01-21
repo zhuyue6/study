@@ -3,6 +3,7 @@ import * as vuePlugin from 'vue-loader/lib/plugin'
 import * as htmlPlugin from 'html-webpack-plugin'
 import * as miniCssExtractPlugin from 'mini-css-extract-plugin'
 import { CleanWebpackPlugin as cleanPlugin } from 'clean-webpack-plugin'
+import * as cssMinimizerPlugin from 'css-minimizer-webpack-plugin'
 import * as webpack from 'webpack'
 let mixin:any = {
   mode: 'production'
@@ -11,12 +12,12 @@ let config:webpack.Configuration = {
   entry: {
     main: "./src/index.ts"
   },
+  devtool: 'eval',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/index.[contenthash].js',
     chunkFilename: 'js/[name].[chunkhash].js'
   },
-  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -35,7 +36,8 @@ let config:webpack.Configuration = {
           options: {
             presets: ['@babel/preset-env']
           }
-        }
+        },
+        exclude: /node_modules/
       },
       {
         test: /\.ts$/,
@@ -54,17 +56,17 @@ let config:webpack.Configuration = {
         test: /\.(woff|ttf|jpg|jpeg|png)$/,
         loader: 'file-loader',
         options: {
-          outputPath: (filename) => {
-            if (/\.(woff|ttf)$/.test(filename)) {
-              return `assets/fonts/${filename}`
+          outputPath: (url) => {
+            if (/\.(woff|ttf)$/.test(url)) {
+              return `assets/fonts/${url}`
             }
-            return `assets/images/${filename}`
+            return `assets/images/${url}`
           },
-          publicPath: (filename) => {
-            if (/\.(woff|ttf)$/.test(filename)) {
-              return `/assets/fonts/${filename}`
+          publicPath: (url) => {
+            if (/\.(woff|ttf)$/.test(url)) {
+              return path.resolve(__dirname, `dist/assets/fonts/${url}`)
             }
-            return `/assets/images/${filename}`
+            return path.resolve(__dirname, `dist/assets/images/${url}`)
           }
         }
       },
@@ -100,13 +102,22 @@ let config:webpack.Configuration = {
   plugins: [
     new cleanPlugin(),
     new vuePlugin(),
+    new cssMinimizerPlugin(),
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require('./depend/dll/elementUI.manifest.json')
+    }),
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require('./depend/dll/vue.manifest.json')
+    }),
     new miniCssExtractPlugin({
       filename: 'assets/css/common.[contenthash].css',
       chunkFilename: 'assets/css/[name].[chunkhash].css'
     }),
     new htmlPlugin({
       filename: 'index.html',
-      template: './src/view/index.html'
+      template: './src/index.html'
     })
   ]
 }
@@ -115,7 +126,8 @@ if (process.argv.includes('--development')) {
     mode: 'development',
     devServer: {
       port: 8080
-    }
+    },
+    devtool: 'inline-source-map'
   }
 }
 config = {
