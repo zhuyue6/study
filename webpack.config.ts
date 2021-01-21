@@ -24,7 +24,7 @@ let config:webpack.Configuration = {
         use: [
           'vue-loader',
           {
-            loader: path.resolve(__dirname, 'src/loader/md-vue-loader.js')
+            loader: path.resolve(__dirname, 'src/loader/md-vue-loader.ts')
           }
         ]
       },
