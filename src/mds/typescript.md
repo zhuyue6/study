@@ -65,6 +65,9 @@ Tsc打包默认不包括node_modules里面的工具通常是编译src下文件�
 Module 配置决定输出的模式  
 Moduleresoulution 默认module决定 可选classic或node  
 Tsconfig 指定了files时，没有指定include 只会编译该文件 
+import * as XXX from 'xxx' 会编译成XXX对象   
+import  XXX from 'xxx' 会编译成XXX.default
+
 
 类型保护 typeof  instanceof 断言 谓词
 

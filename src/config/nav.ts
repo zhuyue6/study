@@ -22,10 +22,11 @@ interface Nav {
   subList: NavBaseInfo[]
 }
 
+const bathUrl = '/'
 
 export const nav:Nav = {
   main: {
-    path: '/index',
+    path: bathUrl,
     name: 'index',
     component: () => import('@/view/index.vue')
   },
@@ -39,28 +40,28 @@ export const nav:Nav = {
         {
           name: 'typescript',
           path: 'typescript',
-          absolutePath: '/index/study/typescript',
+          absolutePath: `${bathUrl}study/typescript`,
           component: () => import('@/mds/typescript.md'),
           index: '1'
         },
         {
           name: 'vue',
           path: 'vue',
-          absolutePath: '/index/study/vue',
+          absolutePath: `${bathUrl}study/vue`,
           component: () => import('@/mds/vue.md'),
           index: '2'
         },
         {
           name: 'performance',
           path: 'performance',
-          absolutePath: '/index/study/performance',
+          absolutePath: `${bathUrl}study/performance`,
           component: () => import('@/mds/performance.md'),
           index: '3'
         },
         {
           name: 'webpack',
           path: 'webpack',
-          absolutePath: '/index/study/webpack',
+          absolutePath: `${bathUrl}study/webpack`,
           component: () => import('@/mds/webpack.md'),
           index: '4'
         }
