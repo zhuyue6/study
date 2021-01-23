@@ -3,6 +3,7 @@
 Mixin init state events lifecycle render  
 Vue只会维护自己vnode 其他jquery加载的不维护  
 State set delete watcher 
+
 # vue响应式流程  
 1、数据观察，通过对象上的__ob__属性来确定是否对象已经被观察, data所有属性observe化  
 2、observe化监听get上进行依赖收集，即Dep.target上有对象时进行收集, 每个observe的属性都有一个dep对象  

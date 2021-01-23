@@ -60,13 +60,13 @@ Type 简单数据 interface 对象数据type 不支持被extends implements
 
 # 关于模块和打包
 
-若ts文件中存在declare 和 export 则为局部模块 没有export 只有declare则为全局模块
+若ts文件中存在declare 和 import 或 export 则为局部模块 没有export 只有declare则为全局模块
 Tsc打包默认不包括node_modules里面的工具通常是编译src下文件就交给webpack 处理  
 Module 配置决定输出的模式  
 Moduleresoulution 默认module决定 可选classic或node  
-Tsconfig 指定了files时，没有指定include 只会编译该文件 
+通常ts会编译Tsconfig下的所有文件， 指定了files和include 只会编译该文件 
 import * as XXX from 'xxx' 会编译成XXX对象   
-import  XXX from 'xxx' 会编译成XXX.default
+import XXX from 'xxx' 会编译成XXX.default
 
 
 类型保护 typeof  instanceof 断言 谓词

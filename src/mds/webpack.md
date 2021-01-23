@@ -9,7 +9,10 @@ entry: './src/index.ts' 默认名称为main
 entry: {  
   &ensp;main1: "./src/index.ts"  
   &ensp;main2: "./src/index2.ts"  
-}  
+}
+entry: ['x1', 'x2'] 这里是将几个bundle合成一个    
+通过library来确定每一个bundle导出的方法名，后续可以按这种应用
+libraryTarget 默认var umd commonjs
 
 description
 entry: {

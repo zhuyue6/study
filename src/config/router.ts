@@ -1,11 +1,12 @@
+import { Nav } from '@/types/nav'
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import { NavBaseInfo, MenuItem, nav } from './nav'
+import { nav } from './nav'
 Vue.use(VueRouter)
-const childrenRouterList: NavBaseInfo[] = []
+const childrenRouterList: Nav.NavBaseInfo[] = []
 
 for (let sub of nav.subList) {
-  const subChildRouterList: MenuItem[] = []
+  const subChildRouterList: Nav.MenuItem[] = []
   for (let subChild of sub.children) {
     subChildRouterList.push({
       path: subChild.path,

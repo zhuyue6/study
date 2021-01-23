@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "ES6",
     "sourceMap": true,
-    "outDir": "./dist",
     "module": "CommonJS",
     "resolveJsonModule": true,
     "baseUrl": ".",
@@ -11,14 +10,5 @@
       "@server/*": ["server/*"],
       "@web/*": ["src/*"]
     }
-  },
-  "files": [
-    "./src/index.ts"
-  ],
-  "include": [
-    "types"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  }
 }
