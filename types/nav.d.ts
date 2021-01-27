@@ -1,25 +1,18 @@
 import { AsyncComponent as VueComponent } from 'vue' 
 
 export namespace Nav {
-  type BaseInfo = {
-    path: string
+   type BaseInfo = {
+    readonly path: string
     absolutePath?: string
     readonly name: string
-    index?: number
-    component: VueComponent
-  }
-  interface MenuItem extends BaseInfo {
+    index?: string
     readonly class?: string
+    children?: BaseInfo[]
+    component?: VueComponent | string
   }
-  
-  interface NavBaseInfo extends BaseInfo {
-    component: VueComponent
-    children?: MenuItem[]
-  }
-  
   interface Config {
-    main: NavBaseInfo
-    subList: NavBaseInfo[]
+    main: BaseInfo
+    subList: BaseInfo[]
   }
 } 
 

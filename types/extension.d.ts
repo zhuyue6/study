@@ -3,5 +3,5 @@ declare module '*.vue' {
 }
 
 declare module '*.md' {
-
+  export { default as default } from 'vue'
 }

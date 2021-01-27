@@ -94,7 +94,9 @@ let config:webpack.Configuration = {
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src')
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': path.resolve(__dirname, ''),
+      '@web': path.resolve(__dirname, 'src')
     },
     extensions: ['.vue', '.ts', '.js']
   },

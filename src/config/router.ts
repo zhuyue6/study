@@ -1,18 +1,21 @@
 import { Nav } from '@/types/nav'
 import Vue from 'vue'
+import { AsyncComponent as VueComponent } from 'vue' 
 import VueRouter, { RouteConfig } from 'vue-router'
 import { nav } from './nav'
+var  aaa  = nav
 Vue.use(VueRouter)
-const childrenRouterList: Nav.NavBaseInfo[] = []
+const childrenRouterList: Nav.BaseInfo[] = []
 
 for (let sub of nav.subList) {
-  const subChildRouterList: Nav.MenuItem[] = []
+  const subChildRouterList: Nav.BaseInfo[] = []
   for (let subChild of sub.children) {
     subChildRouterList.push({
       path: subChild.path,
       name: subChild.name,
       index: subChild.index,
-      component: subChild.component
+      component: subChild.component,
+      children: subChild.children
     })
   }
   
@@ -27,7 +30,7 @@ for (let sub of nav.subList) {
 
 const routes: Array<RouteConfig> = [{
   path: nav.main.path,
-  component: nav.main.component,
+  component: <VueComponent>nav.main.component,
   children: childrenRouterList
 }]
 const router:VueRouter = new VueRouter({

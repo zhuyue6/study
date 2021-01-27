@@ -10,11 +10,14 @@
     "vue-template-compiler": "^2.6.12"
   },
   "scripts": {
-    "dev": "webpack-dev-server --development",
-    "build:vendor": "webpack --config ./build/dll.config.ts",
+    "build:nav": "ts-node --files -r tsconfig-paths/register ./build/nav/nav.ts",
+    "build:nav.watch": "ts-node ./build/nav/watch.ts",
+    "dev": "ts-node ./build/base.ts",
+    "build:vendor": "webpack --config ./build/dll/dll.config.ts",
     "build": "webpack",
     "server": "npm run build && ts-node server/app.ts"
   },
+  "types": "./types/index.d.ts",
   "author": "zhuyue",
   "license": "ISC",
   "devDependencies": {
@@ -40,6 +43,7 @@
     "style-loader": "^2.0.0",
     "ts-loader": "^8.0.11",
     "ts-node": "^9.1.1",
+    "tsconfig-paths": "^3.9.0",
     "typescript": "^4.1.2",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "vue-loader": "^15.9.5",

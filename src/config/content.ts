@@ -1,50 +1,23 @@
 import { Nav } from '@/types/nav'
-
+import dirsList from '@/build/nav/nav.config'
 const bathUrl = '/'
 let pId = 1
 let cId = 1
+let ccId = 1
 
-const content:Array<Nav.NavBaseInfo> = [
-  {
-    name: '学习心得',
-    path: 'study',
-    component: () => import('@/view/study.vue'),
-    children: [
-      {
-        name: 'typescript',
-        path: 'typescript',
-        absolutePath: `${bathUrl}study/typescript`,
-        component: () => import('@/mds/typescript.md')
-      },
-      {
-        name: 'vue',
-        path: 'vue',
-        absolutePath: `${bathUrl}study/vue`,
-        component: () => import('@/mds/vue.md')
-      },
-      {
-        name: 'performance',
-        path: 'performance',
-        absolutePath: `${bathUrl}study/performance`,
-        component: () => import('@/mds/performance.md')
-      },
-      {
-        name: 'webpack',
-        path: 'webpack',
-        absolutePath: `${bathUrl}study/webpack`,
-        component: () => import('@/mds/webpack.md')
-      }
-    ]
-  }
-]
+const content:Array<Nav.BaseInfo> = dirsList
 
 // 给nav分配index
 for (let level1 of content) {
-  level1.index = pId
+  level1.index = pId.toString()
   pId++
   level1.children?.forEach?.((level2)=>{
-    level2.index = cId
+    level2.index = `${pId}-${cId}`
     cId++
+    level2.children?.forEach?.((level3)=>{
+      level3.index = `${pId}-${cId}-${ccId}`
+      ccId++
+    })
   })
 }
 

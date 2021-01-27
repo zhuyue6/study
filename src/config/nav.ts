@@ -4,7 +4,7 @@ export const nav:Nav.Config = {
   main: {
     path: bathUrl,
     name: 'index',
-    component: () => import('@/view/index.vue')
+    component: () => import('@web/view/index.vue')
   },
   subList: content
 }

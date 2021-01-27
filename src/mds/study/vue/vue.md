@@ -1,5 +1,17 @@
 # 实例
-创建vue实例  
+创建vue实例 init流程
+1、initLifecycle   
+2、initEvents   
+3、initRender   
+4、callHook beforeCreate   
+5、initInjections   
+6、initState    
+代理prop和data到vm上   
+observe化data 进入响应式流程   
+7、initProvide   
+8、callHook created   
+9、mount挂载组件   
+
 Mixin init state events lifecycle render  
 Vue只会维护自己vnode 其他jquery加载的不维护  
 State set delete watcher 

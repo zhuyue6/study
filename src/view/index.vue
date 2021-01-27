@@ -3,7 +3,7 @@
     <el-aside>
       <ZNav />
     </el-aside>
-    <el-main>
+    <el-main class="main-container">
       <router-view />
     </el-main>
   </el-container>
@@ -17,6 +17,6 @@ export default Vue.extend({
   }
 })
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 
 </style>
