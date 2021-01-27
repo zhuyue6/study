@@ -1,6 +1,6 @@
 <template>
-  <el-container>
-    <el-aside>
+  <el-container class="main">
+    <el-aside class="left">
       <ZNav />
     </el-aside>
     <el-main class="main-container">
@@ -18,5 +18,13 @@ export default Vue.extend({
 })
 </script>
 <style lang="scss" scoped>
-
+  .main, .main-container {
+    height: 100%;
+  }
+  .main-container {
+    padding: 0 0 0 20px;
+  }
+  .left {
+    background-color: #545c64;
+  }
 </style>

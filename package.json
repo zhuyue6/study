@@ -12,7 +12,8 @@
   "scripts": {
     "build:nav": "ts-node --files -r tsconfig-paths/register ./build/nav/nav.ts",
     "build:nav.watch": "ts-node ./build/nav/watch.ts",
-    "dev": "ts-node ./build/base.ts",
+    "dev:watch": "ts-node ./build/base.ts",
+    "dev": "webpack-dev-server --development",
     "build:vendor": "webpack --config ./build/dll/dll.config.ts",
     "build": "webpack",
     "server": "npm run build && ts-node server/app.ts"

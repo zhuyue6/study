@@ -1,5 +1,5 @@
 import { Nav } from '@/types/nav'
-import dirsList from '@/build/nav/nav.config'
+import dirsList from '@/depend/nav/nav.config'
 const bathUrl = '/'
 let pId = 1
 let cId = 1
