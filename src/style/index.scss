@@ -1,6 +1,8 @@
+$max: 100%;
+$min: 0;
 html, body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+  width: $max;
+  height: $max;
+  margin: $min;
+  padding: $min;
 }
