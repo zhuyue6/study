@@ -15,8 +15,8 @@ let config:webpack.Configuration = {
   devtool: 'eval',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'js/index.[contenthash].js',
-    chunkFilename: 'js/[name].[chunkhash].js'
+    filename: 'assets/js/index.[contenthash].js',
+    chunkFilename: 'assets/js/[name].[chunkhash].js'
   },
   module: {
     rules: [
@@ -101,7 +101,6 @@ let config:webpack.Configuration = {
     extensions: ['.vue', '.ts', '.js']
   },
   plugins: [
-    new cleanPlugin(),
     new vuePlugin(),
     new cssMinimizerPlugin(),
     new webpack.DllReferencePlugin({
@@ -130,6 +129,8 @@ if (process.argv.includes('--development')) {
     },
     devtool: 'inline-source-map'
   }
+} else {
+  config.plugins.push(new cleanPlugin())
 }
 config = {
   ...mixin,
