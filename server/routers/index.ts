@@ -1,6 +1,6 @@
 import express = require('express')
 import { staticConfig } from './config'
-import { advance, todo, after } from '../views'
+import { advance, todo, after } from '../controller'
 import { StaticURL } from '../types'
 
 let App:express.Application = null

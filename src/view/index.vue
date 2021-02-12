@@ -4,7 +4,7 @@
       <ZNav />
     </el-aside>
     <el-main class="main-container">
-      <el-button @click="doit" />
+      <!-- <el-button @click="doit" /> -->
       <router-view />
     </el-main>
   </el-container>
@@ -35,8 +35,5 @@ export default Vue.extend({
   }
   .main-container {
     padding: 0 0 0 20px;
-  }
-  .left {
-    background-color: #545c64;
   }
 </style>
