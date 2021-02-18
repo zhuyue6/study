@@ -5,8 +5,6 @@ const mdiConfig: markdownIt.Options = {
   highlight (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
       try {
-        const aaa = hljs.highlight(lang, str, true).value
-        debugger
         return `<pre class="hljs">
             <code>${ hljs.highlight(lang, str, true).value }</code>
           </pre>

@@ -2,6 +2,7 @@ import { Nav } from '../../types/nav'
 import fs = require('fs')
 const baseUrl = '@/src/mds'
 const appPath = '/src/view/app.vue'
+const titleReg = /[0-9]{1,2}\./
 function createDirRouter({dir, ID, parent}): Nav.BaseInfo {
   const index = parent ? `${parent.index}-${ID}` : ID.toString()
   const quotePath = parent ? `${parent.quotePath}/${dir}` : dir
@@ -44,10 +45,19 @@ function isFile(path: string) {
   return stat.isFile()
 }
 
+function sort(dirs: string[]) {
+  dirs.sort((dir1, dir2)=>{
+    const d1 = titleReg.exec(dir1)
+    const d2 = titleReg.exec(dir2)
+    return parseInt(d1[0]) - parseInt(d2[0])
+  })
+}
+
 export function compile(path: string, parent?: Nav.BaseInfo): Nav.BaseInfo[] {
   let ID = 1
   const list = []
   const dirs = fs.readdirSync(path)
+  sort(dirs)
   for (let dir of dirs) {
     let dirInfo = null
     let filePath = `${path}/${dir}`

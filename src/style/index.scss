@@ -6,3 +6,8 @@ html, body {
   margin: $min;
   padding: $min;
 }
+table, th, tr, td {
+  padding: 5px;
+  border-collapse:collapse; 
+  border: 2px solid #ccc;
+}
