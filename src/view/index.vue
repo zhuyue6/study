@@ -18,8 +18,8 @@ export default Vue.extend({
   },
   methods: {
     doit(){
-      fetch('/ISAPI/test', {
-        method: 'HEAD',
+      fetch('http://127.0.0.12/ISAPI/test', {
+        method: 'HEAD'
       }).then((d)=>{
         console.log(d)
         console.log(1111)
