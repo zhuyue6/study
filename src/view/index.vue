@@ -4,7 +4,6 @@
       <ZNav />
     </el-aside>
     <el-main class="main-container">
-      <!-- <el-button @click="doit" /> -->
       <router-view />
     </el-main>
   </el-container>
@@ -15,19 +14,6 @@ import ZNav from './nav.vue'
 export default Vue.extend({
   components: {
     ZNav
-  },
-  methods: {
-    doit(){
-      fetch('http://127.0.0.12/ISAPI/test', {
-        method: 'HEAD'
-      }).then((d)=>{
-        console.log(d)
-        console.log(1111)
-      }).catch((d)=>{
-        console.log(d)
-        console.log(1111)
-      })
-    } 
   }
 })
 </script>
